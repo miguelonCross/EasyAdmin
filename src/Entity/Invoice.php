@@ -83,9 +83,8 @@ class Invoice
 
     public function __toString()
     {
-        return [
-            $this->getProject()];
         // TODO: Implement __toString() method.
+        return $this->getCode();
     }
 
     public function getId(): ?int

@@ -58,7 +58,7 @@ class Budget
 
     public function calcularPrecio()
     {
-
+        return $this->getServiceBudgets()->getValues();
     }
 
     public function getId(): ?int

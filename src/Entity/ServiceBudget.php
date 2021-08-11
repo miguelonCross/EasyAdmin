@@ -33,6 +33,11 @@ class ServiceBudget
      */
     private $quantity;
 
+    public function price(){
+        $servicePrice = $this->getService()->getPrice();
+        $pricePerService = $this->getQuantity() * $servicePrice;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
