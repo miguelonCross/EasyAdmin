@@ -3,7 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -12,14 +16,14 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        if (Crud::PAGE_NEW === $pageName || Crud::PAGE_EDIT === $pageName) {
+            yield TextareaField::new('description', 'Descripción');
+            yield NumberField::new('price', 'Precio propuesto');
+            yield AssociationField::new('client', 'Cliente');
+            yield AssociationField::new('invoice', 'Factura');
+        }
     }
-    */
 }

@@ -44,6 +44,16 @@ class WorkMade
      */
     private $invoice;
 
+    public function getEuro(){
+        return $this->getWorkingTime() * $this->getService()->getPrice();
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

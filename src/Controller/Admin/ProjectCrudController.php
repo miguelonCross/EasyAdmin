@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Project;
 use App\Form\InvoiceType;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -42,8 +43,8 @@ class ProjectCrudController extends AbstractCrudController
             yield ImageField::new('image', 'Imagen')->setBasePath('images/project');
             yield BooleanField::new('isFinished', 'Terminado');
 
-
         }
+
 
         if (Crud::PAGE_EDIT == $pageName) {
             yield FormField::addPanel('Datos del proyecto');

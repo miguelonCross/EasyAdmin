@@ -55,6 +55,12 @@ class Service
         $this->workMades = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $this->getName();
+        // TODO: Implement __toString() method.
+    }
+
     public function getId(): ?int
     {
         return $this->id;

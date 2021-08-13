@@ -50,9 +50,9 @@ class Invoice
     private $paymentMethod;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
-    private $discount;
+    private $discount = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="invoices")
@@ -79,6 +79,8 @@ class Invoice
     {
         $this->budgets = new ArrayCollection();
         $this->workMades = new ArrayCollection();
+        $this->code = 'asdasdad';
+
     }
 
     public function __toString()
@@ -96,13 +98,7 @@ class Invoice
     {
         return $this->code;
     }
-
-    public function setCode(int $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
+    
 
     public function getBillingPeriod(): ?string
     {
@@ -118,15 +114,22 @@ class Invoice
 
     public function getPrice(): ?float
     {
+        $priceTotal = 0;
+
+        foreach ($this->getWorkMades() as $workMade){
+            $priceTotal += $workMade->getEuro();
+        }
+
+        if(0 < $this->getDiscount()){
+            $totalDiscount = ($priceTotal * $this->getDiscount()) / 100;
+            $priceTotal = $priceTotal - $totalDiscount;
+        }
+
+        $this->price = $priceTotal;
+
         return $this->price;
     }
 
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
 
     public function getPaymentAt(): ?\DateTimeImmutable
     {

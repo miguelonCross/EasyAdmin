@@ -53,7 +53,6 @@ class Budget
     public function __construct()
     {
         $this->serviceBudgets = new ArrayCollection();
-        $this->setCode('asdasdasdad');
     }
 
     public function calcularPrecio()

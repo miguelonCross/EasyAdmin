@@ -33,6 +33,12 @@ class ServiceBudget
      */
     private $quantity;
 
+    public function __toString()
+    {
+        $this->getService();
+        // TODO: Implement __toString() method.
+    }
+
     public function price(){
         $servicePrice = $this->getService()->getPrice();
         $pricePerService = $this->getQuantity() * $servicePrice;
