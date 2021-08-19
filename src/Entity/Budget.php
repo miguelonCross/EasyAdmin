@@ -53,11 +53,12 @@ class Budget
     public function __construct()
     {
         $this->serviceBudgets = new ArrayCollection();
+
     }
 
     public function calcularPrecio()
     {
-        return $this->getServiceBudgets()->getValues();
+        return $this->price = $this->getServiceBudgets()->getValues();
     }
 
     public function getId(): ?int

@@ -57,7 +57,7 @@ class Service
 
     public function __toString()
     {
-        $this->getName();
+        return $this->getName();
         // TODO: Implement __toString() method.
     }
 
